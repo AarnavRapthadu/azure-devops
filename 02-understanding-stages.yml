@@ -9,10 +9,10 @@ stages:
   jobs:
   - job: FirstJob
     steps:
-    - bash: echo Build FirstJob
+    - bash: echo Build FirstJob 1
   - job: SecondJob
     steps:
-    - bash: echo Build SecondJob
+    - bash: echo Build SecondJob 2
 - stage: DevDeploy
   jobs:
   - job: DevDeployJob
