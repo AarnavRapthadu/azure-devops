@@ -32,11 +32,11 @@ jobs:
   - script: echo Job3!
   displayName: 'Job 3'
 
--job: job4
- dependsOn:
- - job1
- - job2
- steps:
- - script: echo Job4!
- displayName: 'Job 4'
+- job: job4
+  dependsOn:
+  - job1
+  - job2
+  steps:
+  - script: echo Job4!
+  displayName: 'Job 4'
 
