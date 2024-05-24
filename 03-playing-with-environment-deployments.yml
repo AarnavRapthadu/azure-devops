@@ -13,4 +13,4 @@ pool:
 
 steps:
   - script: echo Running on $(operatingSystem)
-    displayName: 'Run a single-line script'
+    displayName: 'Running a single-line script'
