@@ -1,0 +1,33 @@
+trigger:
+- master
+
+pool:
+ vmImage: 'ubuntu-latest'
+
+stages:
+- stage: DevDeployJob
+  variables:
+   environment: Dev
+  jobs:
+  - job: FirstJob
+    steps:
+    - bash: echo java -version
+    - bash: echo node --version
+    - bash: echo $(environment)DeployJob
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.BuildName)
+
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: |
+          **/*.yaml
+          **/*.tf
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+    
